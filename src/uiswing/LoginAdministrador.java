@@ -18,8 +18,8 @@ public class LoginAdministrador extends Login {
 
     @Override
     public void mostrarProximaInterfaz(Sesion sesion) {
-        MonitorUsuariosConectados monitorUsuariosConectados =
-                new MonitorUsuariosConectados(null, false, (UsuarioAdministrador) sesion.getUsuario());
+        MonitorLlamadas monitorUsuariosConectados =
+                new MonitorLlamadas(null, false, (UsuarioAdministrador) sesion.getUsuario());
         monitorUsuariosConectados.setVisible(true);
     }
     
