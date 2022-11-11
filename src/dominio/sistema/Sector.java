@@ -6,6 +6,8 @@ package dominio.sistema;
 
 import java.util.List;
 import dominio.trabajador.Trabajador;
+import dominio.sistema.PuestoDeTrabajo;
+import java.util.HashSet;
 
 /**
  *
@@ -17,6 +19,7 @@ public class Sector {
     private String nombre;
     private int numero;
     private int cantidadPuestos;
+    private int cantidadConectados;
 
     public Sector(List<Trabajador> trabajadores, List<PuestoDeTrabajo> puestosDeTrabajo, String nombre, int numero, int cantidadPuestos) {
         this.trabajadores = trabajadores;
@@ -65,6 +68,33 @@ public class Sector {
     public void setCantidadPuestos(int cantidadPuestos) {
         this.cantidadPuestos = cantidadPuestos;
     }
+
+    public int getCantidadConectados() {
+        return cantidadConectados;
+    }
+
+    public void setCantidadConectados() {
+        cantidadConectados++;
+    }
     
+    public boolean puestoDisponible(){
+     return this.cantidadConectados < this.cantidadPuestos;
+     
+    }
+    
+    public void asignarPuesto(Trabajador unT){
+        int i = 0;
+        boolean asignado = false;
+        PuestoDeTrabajo unPuesto = new PuestoDeTrabajo();
+        while(this.puestosDeTrabajo.size()< i || asignado){
+            if(puestosDeTrabajo.get(i).getTrabajador() == null){
+                unPuesto = puestosDeTrabajo.get(i);
+                unPuesto.setTrabajador(unT);
+                asignado = true;
+                
+            }
+            i++;
+        }
+    }
     
 }

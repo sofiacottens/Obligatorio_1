@@ -17,6 +17,11 @@ public class Trabajador {
         this.password = password;
     }
 
+    public Trabajador(String cedula, String password){
+        this.cedula = cedula;
+        this.password = password;
+    }
+
     public String getCedula() {
         return cedula;
     }

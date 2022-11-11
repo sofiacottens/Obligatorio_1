@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uiswing;
 
-import dominio.Sistema;
 import dominio.trabajador.Sesion;
+import dominio.Sistema;
+import dominio.trabajador.Trabajador;
+
 import java.awt.Frame;
 
 public class LoginTrabajador extends Login {
@@ -16,10 +13,14 @@ public class LoginTrabajador extends Login {
     }
 
     @Override
-    public Sesion login(String username, String password) {
-        return Sistema.getInstancia().login(username, password);
+    public Sesion login(String cedula, String password) {
+        return Sistema.getInstancia().login(cedula, password);
     }
-  
+
+    @Override
+    public void mostrarProximaInterfaz(Sesion sesion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }
-
