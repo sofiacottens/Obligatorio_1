@@ -3,6 +3,7 @@ package dominio;
 
 import dominio.trabajador.Sesion;
 import dominio.trabajador.SistemaTrabajador;
+import dominio.trabajador.TrabajadorException;
 import java.util.List;
 import observer.Observable;
 
@@ -15,7 +16,7 @@ public class Sistema extends Observable {
         return instancia;
     }
 
-    public Sesion login(String usuario, String password) {
+    public Sesion login(String usuario, String password) throws TrabajadorException {
         return st.login(usuario, password);
     }
     

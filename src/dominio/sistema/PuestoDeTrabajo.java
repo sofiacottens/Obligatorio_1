@@ -12,6 +12,9 @@ public class PuestoDeTrabajo {
     private Trabajador trabajador;
     private Llamada llamadaEnCurso;
 
+    public PuestoDeTrabajo(){
+        
+    }
     public PuestoDeTrabajo(double tiempoPromedio, int llamadasAtendidas, Trabajador trabajador, Llamada llamadaEnCurso) {
         this.tiempoPromedio = tiempoPromedio;
         this.llamadasAtendidas = llamadasAtendidas;

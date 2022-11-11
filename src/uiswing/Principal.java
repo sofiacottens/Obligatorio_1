@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package uiswing;
+import uiswing.Login;
 
 import javax.swing.JOptionPane;
 
@@ -31,7 +32,6 @@ public class Principal extends javax.swing.JFrame {
         mnu_Principal = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnu_item_LoginAgenda = new javax.swing.JMenuItem();
-        mnu_item_LoginAdministrador = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnu_item_Salir = new javax.swing.JMenuItem();
 
@@ -47,14 +47,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mnu_item_LoginAgenda);
-
-        mnu_item_LoginAdministrador.setText("Login Administrador");
-        mnu_item_LoginAdministrador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnu_item_LoginAdministradorActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mnu_item_LoginAdministrador);
 
         mnu_Principal.add(jMenu1);
 
@@ -92,14 +84,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnu_item_SalirActionPerformed
 
     private void mnu_item_LoginAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_item_LoginAgendaActionPerformed
-        LoginTrabajador login = new LoginTrabajador(this, false);
+        Login login = new LoginTrabajador(this, false);
         login.setVisible(true);
     }//GEN-LAST:event_mnu_item_LoginAgendaActionPerformed
-
-    private void mnu_item_LoginAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_item_LoginAdministradorActionPerformed
-        LoginTrabajador login = new LoginTrabajador(this, false);
-        login.setVisible(true);
-    }//GEN-LAST:event_mnu_item_LoginAdministradorActionPerformed
 
     private void salir() {
         int opcion = JOptionPane.showConfirmDialog(this, "Desea Salir?");
@@ -112,7 +99,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar mnu_Principal;
-    private javax.swing.JMenuItem mnu_item_LoginAdministrador;
     private javax.swing.JMenuItem mnu_item_LoginAgenda;
     private javax.swing.JMenuItem mnu_item_Salir;
     // End of variables declaration//GEN-END:variables
