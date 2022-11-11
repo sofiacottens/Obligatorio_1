@@ -5,6 +5,7 @@ import dominio.Sistema;
 import dominio.sistema.Sector;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import observer.Observable;
 import observer.Observador;
 
@@ -21,33 +22,68 @@ public class MonitorLlamadas extends javax.swing.JDialog implements Observador {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         let_sectors_list = new javax.swing.JList<>();
+        jLabel_sector = new javax.swing.JLabel();
+        elegir_sector = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jScrollPane1.setViewportView(let_sectors_list);
+
+        jLabel_sector.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel_sector.setText("Elija el sector que desea monitorear:");
+
+        elegir_sector.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        elegir_sector.setText("Monitorear");
+        elegir_sector.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        elegir_sector.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        elegir_sector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elegir_sectorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_sector)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(elegir_sector)
+                        .addGap(8, 8, 8)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(jLabel_sector)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(elegir_sector)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void elegir_sectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegir_sectorActionPerformed
+        String sectorElegido = (String) let_sectors_list.getSelectedValue();
+        if (sectorElegido != null) {
+            elegirSector(sectorElegido);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo avanzar: no se ha elegido ningun sector");
+        }
+    }//GEN-LAST:event_elegir_sectorActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton elegir_sector;
+    private javax.swing.JLabel jLabel_sector;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> let_sectors_list;
     // End of variables declaration//GEN-END:variables
@@ -75,5 +111,9 @@ public class MonitorLlamadas extends javax.swing.JDialog implements Observador {
         if (evento.equals(EventoSistema.LOGIN)) {
             mostrarLista();
         }
+    }
+
+    private void elegirSector(String sectorElegido) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

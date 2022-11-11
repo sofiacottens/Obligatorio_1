@@ -18,9 +18,7 @@ public class Sector {
     private int numero;
     private int cantidadPuestos;
 
-    public Sector(List<Trabajador> trabajadores, List<PuestoDeTrabajo> puestosDeTrabajo, String nombre, int numero, int cantidadPuestos) {
-        this.trabajadores = trabajadores;
-        this.puestosDeTrabajo = puestosDeTrabajo;
+    public Sector(String nombre, int numero, int cantidadPuestos) {
         this.nombre = nombre;
         this.numero = numero;
         this.cantidadPuestos = cantidadPuestos;
@@ -64,6 +62,26 @@ public class Sector {
 
     public void setCantidadPuestos(int cantidadPuestos) {
         this.cantidadPuestos = cantidadPuestos;
+    }
+
+    public void agregarTrabajador(Trabajador trabajador) {
+        if(trabajadores.size() > 0){
+            if (!trabajadores.contains(trabajador)) {
+                trabajadores.add(trabajador);
+           }
+        } else {
+            trabajadores.add(trabajador);
+        }
+    }
+
+    public void agregarPuesto(PuestoDeTrabajo p) {
+        if(puestosDeTrabajo.size() > 0 && puestosDeTrabajo.size() <= cantidadPuestos){
+            if (!puestosDeTrabajo.contains(p)) {
+                puestosDeTrabajo.add(p);
+           }
+        } else {
+            puestosDeTrabajo.add(p);
+        }
     }
     
     

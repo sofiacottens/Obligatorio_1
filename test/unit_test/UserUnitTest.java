@@ -4,7 +4,7 @@ package unit_test;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-import dominio.trabajador.UsuarioAgenda;
+import dominio.trabajador.Trabajador;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,7 +39,7 @@ public class UserUnitTest {
 
     @Test
     public void create_user() {
-        UsuarioAgenda usuario = new UsuarioAgenda("usernameTest", "passwordTest", "Nombre Test");
+        Trabajador usuario = new Trabajador("usernameTest", "passwordTest", "Nombre Test");
         assertNotNull(usuario);
     }
 }

@@ -19,6 +19,11 @@ public class LoginTrabajador extends Login {
     public Sesion login(String username, String password) {
         return Sistema.getInstancia().login(username, password);
     }
+
+    @Override
+    public void mostrarProximaInterfaz(Sesion sesion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
   
 
 }
