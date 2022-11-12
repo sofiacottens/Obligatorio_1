@@ -58,9 +58,11 @@ public class SistemaTrabajador {
         return logueados;
     }
 
-    public Trabajador  crearTrabajador(String cedula, String password, String nombreCompleto) {
 
-        Trabajador usuario = new Trabajador(cedula, nombreCompleto, password);
+    public void registrarUsuario(String cedula, String password, String nombreCompleto, Sector sector) {
+
+
+        Trabajador usuario = new Trabajador(cedula, nombreCompleto, password, sector);
         if (!trabajadores.contains(usuario)) {
             trabajadores.add(usuario);
         }

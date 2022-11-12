@@ -27,6 +27,10 @@ public class Sector {
         this.cantidadPuestos = cantidadPuestos;
     }
 
+    Sector() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public List<Trabajador> getTrabajadores() {
         return trabajadores;
     }
@@ -111,6 +115,32 @@ public class Sector {
             }
             i++;
         }
+    }
+
+    public int numeroDePuestoDeTrabajo(Trabajador trabajador) {
+        int i = 0;
+        boolean encontre = false;
+        while(i < puestosDeTrabajo.size() && !encontre){
+            if(puestosDeTrabajo.get(i).getTrabajador().equals(trabajador)){
+                encontre = true;
+                return i;
+            }
+            i++;
+        }return 0;
+    }
+
+    public int cantidadLlamadasAtendidas(Trabajador trabajador) {
+        int i = 0;
+        boolean encontre = false;
+        PuestoDeTrabajo unPuesto = new PuestoDeTrabajo();
+        while(i < puestosDeTrabajo.size() && !encontre){
+            if(puestosDeTrabajo.get(i).getTrabajador().equals(trabajador)){
+                encontre = true;
+                unPuesto = puestosDeTrabajo.get(i);
+            }
+            i++;
+        }
+        return unPuesto.getLlamadasAtendidas();
     }
     
 }
