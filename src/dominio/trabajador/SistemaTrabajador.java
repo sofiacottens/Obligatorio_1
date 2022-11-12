@@ -58,12 +58,15 @@ public class SistemaTrabajador {
         return logueados;
     }
 
-    public void registrarUsuario(String cedula, String password, String nombreCompleto) {
+    public Trabajador  crearTrabajador(String cedula, String password, String nombreCompleto) {
 
         Trabajador usuario = new Trabajador(cedula, nombreCompleto, password);
         if (!trabajadores.contains(usuario)) {
             trabajadores.add(usuario);
         }
+        
+        return usuario;
     }    
     
+
 }
