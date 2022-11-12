@@ -15,6 +15,8 @@ public abstract class Login extends javax.swing.JDialog {
 
     /**
      * Creates new form Login
+     * @param parent
+     * @param modal
      */
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

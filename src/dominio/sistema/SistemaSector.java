@@ -10,5 +10,17 @@ import dominio.trabajador.Trabajador;
 
 
 public class SistemaSector {
+
+    public Sector sector = new Sector();
+    
+    public int numeroDePuestoDeTrabajo(Trabajador trabajador) {
+        return sector.numeroDePuestoDeTrabajo(trabajador);
+    }
+
+    public int cantidadLlamadasAtendidas(Trabajador trabajador) {
+        return sector.cantidadLlamadasAtendidas(trabajador);
+    }
+
+    
    
 }
