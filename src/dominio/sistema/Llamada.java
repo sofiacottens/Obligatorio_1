@@ -15,10 +15,15 @@ public class Llamada {
     private Date fechaFin;
     private double costo;
     private Sector sector;
+    String descripcion;
 
     public Llamada(Date fechaInicio, Sector sector) {
         this.fechaInicio = fechaInicio;
         this.sector = sector;
+        this.descripcion = descripcion;
+        this.fechaInicio = new Date();
+        this.fechaFin = new Date();
+        this.costo = calcularCostoLlamada();
     }
 
     public Date getFechaInicio() {
@@ -51,6 +56,18 @@ public class Llamada {
 
     public void setSector(Sector sector) {
         this.sector = sector;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    private double calcularCostoLlamada() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

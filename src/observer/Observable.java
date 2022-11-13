@@ -22,7 +22,7 @@ public abstract class Observable {
     public void avisar(Object evento) {
         List<Observador> observadoresTemporal = new ArrayList<>(observadores);
         for (Observador observadorTemporal : observadoresTemporal) {
-           // observadorTemporal.actualizar(this, evento);
+            observadorTemporal.actualizar(this, evento);
         }
     }
 }

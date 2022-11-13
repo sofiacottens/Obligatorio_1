@@ -27,8 +27,7 @@ public class Sector {
         this.cantidadPuestos = cantidadPuestos;
     }
 
-    Sector() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Sector() {
     }
 
     public List<Trabajador> getTrabajadores() {
@@ -77,6 +76,7 @@ public class Sector {
 
     public void setCantidadConectados() {
         cantidadConectados++;
+    }
     public void agregarTrabajador(Trabajador trabajador) {
         if(trabajadores.size() > 0){
             if (!trabajadores.contains(trabajador)) {
@@ -129,18 +129,29 @@ public class Sector {
         }return 0;
     }
 
-    public int cantidadLlamadasAtendidas(Trabajador trabajador) {
-        int i = 0;
+    public String cantidadLlamadasAtendidas(Trabajador trabajador) {
+        PuestoDeTrabajo unPuesto = obtenerPuestoDeTrabajo(trabajador);
+        return "Llamadas atendidas: " + unPuesto.getLlamadasAtendidas();
+    }
+
+    public String tiempoPromedioLlamada(Trabajador trabajador) {
+        PuestoDeTrabajo unPuesto = obtenerPuestoDeTrabajo(trabajador);
+        return "Tiempo promedio: " + unPuesto.getTiempoPromedio();
+    }
+
+    private PuestoDeTrabajo obtenerPuestoDeTrabajo(Trabajador trabajador) {
+         int i = 0;
         boolean encontre = false;
         PuestoDeTrabajo unPuesto = new PuestoDeTrabajo();
         while(i < puestosDeTrabajo.size() && !encontre){
             if(puestosDeTrabajo.get(i).getTrabajador().equals(trabajador)){
                 encontre = true;
                 unPuesto = puestosDeTrabajo.get(i);
+                
             }
             i++;
         }
-        return unPuesto.getLlamadasAtendidas();
+        return unPuesto;
     }
     
 }

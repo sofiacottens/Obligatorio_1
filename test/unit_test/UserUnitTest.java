@@ -38,9 +38,9 @@ public class UserUnitTest {
     public void tearDown() {
     }
 
-    @Test
-    public void create_user() {
-        Trabajador usuario = new Trabajador("123456", "Elianna", "123");
-        assertNotNull(usuario);
-    }
+    //@Test
+//    public void create_user() {
+//        Trabajador usuario = new Trabajador("123456", "Elianna", "123");
+//        assertNotNull(usuario);
+//    }
 }

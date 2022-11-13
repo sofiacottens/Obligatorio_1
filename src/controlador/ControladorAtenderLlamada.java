@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import dominio.EventoSistema;
 import dominio.sistema.Llamada;
 import dominio.trabajador.Trabajador;
 import observer.Observable;
@@ -16,7 +17,7 @@ import dominio.Sistema;
  *
  * @author ana
  */
-public class ControladorAtenderLlamada implements Observador {
+public  class ControladorAtenderLlamada implements Observador {
     
     private Trabajador trabajador;
     private Llamada llamada;
@@ -35,13 +36,13 @@ public class ControladorAtenderLlamada implements Observador {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    /*@Override
+    @Override
     public void actualizar(Observable origen, Object evento) {
-        if (evento.equals(EventoAgenda.NUEVO_CONTACTO)) {
-            mostrarContactos();
-            mostrarTitulo();
+        if (evento.equals(EventoSistema.LOGIN)) {
+            //mostrarContactos();
+            //mostrarTitulo();
         }
-    }*/
+    }
 
     public void mostrarNombreTrabajador() {
         String nombre = this.trabajador.getNombre();
@@ -56,6 +57,7 @@ public class ControladorAtenderLlamada implements Observador {
                         numeroDePuestoDeTrabajo();
         vista.mostrarSector(sector);
     }
+    
     public int numeroDePuestoDeTrabajo(){
        return Sistema.getInstancia().numeroDePuestoDeTrabajo(this.trabajador);
     }
@@ -63,6 +65,14 @@ public class ControladorAtenderLlamada implements Observador {
    
 
     public void cantidadLlamadasAtendidas() {
-        int atendidas = Sistema.getInstancia().cantidadLlamadasAtendidas(this.trabajador);
-       vista.cantidadLlamadasAtendidas(atendidas);    }
+        String atendidas = Sistema.getInstancia().cantidadLlamadasAtendidas(this.trabajador);
+       vista.cantidadLlamadasAtendidas(atendidas);    
+    }
+
+    public void tiempoPromedioLlamada() {
+       String atendidas = Sistema.getInstancia().tiempoPromedioLlamada(this.trabajador);
+       vista.tiempoPromedioLlamada(atendidas);
+    }
+
+   
 }

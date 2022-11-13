@@ -15,14 +15,19 @@ public class DatosPrueba {
         Sistema logica = Sistema.getInstancia();
         Calendar fecha = Calendar.getInstance();
         
-        Trabajador t1 = logica.crearTrabajador("123456789", "trabajador1", "Trabajador Uno");
-        Trabajador t2 = logica.crearTrabajador("987654321", "trabajador2", "Trabajador Dos");
-        Trabajador t3 = logica.crearTrabajador("741852963", "trabajador3", "Trabajador Tres");
-        Trabajador t4 = logica.crearTrabajador("369258147", "trabajador4", "Trabajador Cuatro");
-        Trabajador t5 = logica.crearTrabajador("147258369", "trabajador5", "Trabajador Cinco");
-        Trabajador t6 = logica.crearTrabajador("6547893321", "trabajador6", "Trabajador Seis");
-        Trabajador t7 = logica.crearTrabajador("564231897", "trabajador7", "Trabajador Siete");
-        Trabajador t8 = logica.crearTrabajador("246351789", "trabajador8", "Trabajador Ocho");
+        Sector sector1 = logica.crearSector("sector1", 01, 5);
+        Sector sector2 = logica.crearSector("sector2", 02, 6);
+        Sector sector3 = logica.crearSector("sector3", 03, 4);
+        Sector sector4 = logica.crearSector("sector4", 04, 5);
+        
+        Trabajador t1 = logica.crearTrabajador("123456789", "trabajador1", "Trabajador Uno", sector1);
+        Trabajador t2 = logica.crearTrabajador("987654321", "trabajador2", "Trabajador Dos", sector1);
+        Trabajador t3 = logica.crearTrabajador("741852963", "trabajador3", "Trabajador Tres", sector2);
+        Trabajador t4 = logica.crearTrabajador("369258147", "trabajador4", "Trabajador Cuatro", sector2);
+        Trabajador t5 = logica.crearTrabajador("147258369", "trabajador5", "Trabajador Cinco", sector3);
+        Trabajador t6 = logica.crearTrabajador("6547893321", "trabajador6", "Trabajador Seis", sector3);
+        Trabajador t7 = logica.crearTrabajador("564231897", "trabajador7", "Trabajador Siete", sector4);
+        Trabajador t8 = logica.crearTrabajador("246351789", "trabajador8", "Trabajador Ocho", sector4);
         
         PuestoDeTrabajo pdt1 = logica.crearPuestoDeTrabajo(12, 225);
         PuestoDeTrabajo pdt2 = logica.crearPuestoDeTrabajo(8, 300);
@@ -45,10 +50,7 @@ public class DatosPrueba {
         pdt7.setTrabajador(t7);
         pdt8.setTrabajador(t8);
         
-        Sector sector1 = logica.crearSector("sector1", 01, 5);
-        Sector sector2 = logica.crearSector("sector2", 02, 6);
-        Sector sector3 = logica.crearSector("sector3", 03, 4);
-        Sector sector4 = logica.crearSector("sector4", 04, 5);
+        
         
         logica.agregarTrabajadorEnSector(t1, sector4);
         logica.agregarTrabajadorEnSector(t2, sector4);

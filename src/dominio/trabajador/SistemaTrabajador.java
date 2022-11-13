@@ -59,7 +59,7 @@ public class SistemaTrabajador {
     }
 
 
-    public void registrarUsuario(String cedula, String password, String nombreCompleto, Sector sector) {
+    public Trabajador registrarUsuario(String cedula, String password, String nombreCompleto, Sector sector) {
 
 
         Trabajador usuario = new Trabajador(cedula, nombreCompleto, password, sector);
@@ -69,6 +69,17 @@ public class SistemaTrabajador {
         
         return usuario;
     }    
+
+    public Trabajador crearTrabajador(String cedula, String password, String nombreCompleto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+    public Trabajador crearTrabajador(String cedula, String password, String nombreCompleto, Sector sector) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 
 }

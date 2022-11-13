@@ -7,18 +7,23 @@ package uiswing;
 import vista.VistaAtender;
 import controlador.ControladorAtenderLlamada;
 import dominio.trabajador.Trabajador;
+import javax.swing.JFrame; 
 
-public abstract class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
+
+public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
 
     ControladorAtenderLlamada controlador = new ControladorAtenderLlamada();
     
     public AtenderLlamada(java.awt.Frame parent, boolean modal, Trabajador trabajador){
-        super(parent, modal);
+        //super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(parent);
         
         
         controlador = new ControladorAtenderLlamada(trabajador);
+    }
+
+    private AtenderLlamada() {
     }
 
     
@@ -36,7 +41,6 @@ public abstract class AtenderLlamada extends javax.swing.JFrame implements Vista
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         labEstadoLlamada = new javax.swing.JTextField();
-        LabCliente = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         LabSector2 = new javax.swing.JLabel();
@@ -68,13 +72,6 @@ public abstract class AtenderLlamada extends javax.swing.JFrame implements Vista
         labEstadoLlamada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 labEstadoLlamadaActionPerformed(evt);
-            }
-        });
-
-        LabCliente.setText("jTextField2");
-        LabCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LabClienteActionPerformed(evt);
             }
         });
 
@@ -153,10 +150,6 @@ public abstract class AtenderLlamada extends javax.swing.JFrame implements Vista
                                 .addComponent(LabTiempoPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(LabCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,9 +170,7 @@ public abstract class AtenderLlamada extends javax.swing.JFrame implements Vista
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labEstadoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LabCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabSector2))
@@ -201,10 +192,6 @@ public abstract class AtenderLlamada extends javax.swing.JFrame implements Vista
         // TODO add your handling code here:
     }//GEN-LAST:event_labEstadoLlamadaActionPerformed
 
-    private void LabClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LabClienteActionPerformed
-
     private void LabTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabTrabajadorActionPerformed
         mostrarNombreTrabajador();
         
@@ -219,13 +206,14 @@ public abstract class AtenderLlamada extends javax.swing.JFrame implements Vista
     }//GEN-LAST:event_LabLlamadasAtendidasActionPerformed
 
     private void LabTiempoPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabTiempoPromedioActionPerformed
-        // TODO add your handling code here:
+        tiempoPromedioLlamada();
     }//GEN-LAST:event_LabTiempoPromedioActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) 
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -249,16 +237,15 @@ public abstract class AtenderLlamada extends javax.swing.JFrame implements Vista
         }
         //</editor-fold>
 
-        /* Create and display the form *//*
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AtenderLlamada().setVisible(true);
             }
         });
-    }*/
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField LabCliente;
     private javax.swing.JTextField LabLlamadasAtendidas;
     private javax.swing.JTextField LabSector;
     private javax.swing.JLabel LabSector1;
@@ -284,5 +271,29 @@ public abstract class AtenderLlamada extends javax.swing.JFrame implements Vista
 
     private void cantidadLlamadasAtendidas() {
         controlador.cantidadLlamadasAtendidas();
+    }
+
+    @Override
+    public void mostrarNombreTrabajador(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarSector(String sector) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cantidadLlamadasAtendidas(String atendidas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void tiempoPromedioLlamada() {
+        controlador.tiempoPromedioLlamada();
+    }
+
+    @Override
+    public void tiempoPromedioLlamada(String atendidas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

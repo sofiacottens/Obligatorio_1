@@ -1,12 +1,14 @@
 package dominio;
 
-master
+
+import dominio.sistema.SistemaSector;
 import dominio.trabajador.SistemaTrabajador;
 import dominio.trabajador.Trabajador;
 import dominio.trabajador.TrabajadorException;
 import dominio.sistema.Llamada;
 import dominio.sistema.PuestoDeTrabajo;
 import dominio.sistema.Sector;
+import dominio.trabajador.Sesion;
 import dominio.trabajador.Trabajador;
 import java.util.Date;
 import java.util.List;
@@ -25,9 +27,9 @@ public class Sistema extends Observable {
 
     public Sesion loginTrabajador(String usuario, String password) throws TrabajadorException {
         return st.login(usuario, password);
-    
-    public Trabajador crearTrabajador(String cedula, String password, String nombreCompleto) {
-        return st.crearTrabajador(cedula, password, nombreCompleto);
+    }
+    public Trabajador crearTrabajador(String cedula, String password, String nombreCompleto, Sector sector) {
+        return st.crearTrabajador(cedula, password, nombreCompleto, sector);
     }
     
     public PuestoDeTrabajo crearPuestoDeTrabajo(double tiempoPromedio, int llamadasAtendidas){
@@ -54,6 +56,7 @@ public class Sistema extends Observable {
     public Llamada crearLlamada(Date fechaInicio, Sector s) {
         return ss.crearLlamada(fechaInicio, s);
 
+    }
     public void registrarUsuario(
             String cedula,
             String password,
@@ -71,7 +74,12 @@ public class Sistema extends Observable {
         return ss.numeroDePuestoDeTrabajo(trabajador);
     }
 
-    public int cantidadLlamadasAtendidas(Trabajador trabajador) {
+    public String cantidadLlamadasAtendidas(Trabajador trabajador) {
         return ss.cantidadLlamadasAtendidas(trabajador);
+    }
+
+    public String tiempoPromedioLlamada(Trabajador trabajador) {
+        return ss.tiempoPromedioLlamada(trabajador);
+
     }
 }
