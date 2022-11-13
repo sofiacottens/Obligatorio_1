@@ -1,15 +1,17 @@
 package uiswing;
 
-import dominio.EventoSistema;
-import dominio.Sistema;
 import dominio.sistema.Sector;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import observer.Observable;
-import observer.Observador;
+import vista.VistaMonitoreo;
 
-public class MonitorLlamadas extends javax.swing.JDialog implements Observador {
+
+public class MonitorLlamadas extends javax.swing.JDialog implements VistaMonitoreo {
+    
+    public MonitorLlamadas() {
+       initComponents();
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,8 +90,8 @@ public class MonitorLlamadas extends javax.swing.JDialog implements Observador {
     private javax.swing.JList<String> let_sectors_list;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrarLista() {
-        List<Sector> sectoresTotal = Sistema.getInstancia().getSectores();
+    @Override
+    public void mostrarTodosLosSectores(List<Sector> sectoresTotal) {
         List<String> listaSectoresArr = new ArrayList<>();
         String linea = null;
         for(Sector sector : sectoresTotal){
@@ -104,13 +106,6 @@ public class MonitorLlamadas extends javax.swing.JDialog implements Observador {
     private String formatear(Sector sector) {
         return sector.getNombre();
                 
-    }
-
-    @Override
-    public void actualizar(Observable origen, Object evento) {
-        if (evento.equals(EventoSistema.LOGIN)) {
-            mostrarLista();
-        }
     }
 
     private void elegirSector(String sectorElegido) {

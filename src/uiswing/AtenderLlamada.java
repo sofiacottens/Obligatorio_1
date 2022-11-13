@@ -7,7 +7,6 @@ package uiswing;
 import vista.VistaAtender;
 import controlador.ControladorAtenderLlamada;
 import dominio.trabajador.Trabajador;
-import javax.swing.JFrame; 
 
 
 public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {

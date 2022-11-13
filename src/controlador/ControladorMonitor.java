@@ -5,10 +5,24 @@
  */
 package controlador;
 
+import dominio.Sistema;
+import dominio.sistema.Sector;
+import java.util.List;
+import vista.VistaMonitoreo;
+
 /**
  *
  * @author sofia
  */
 public class ControladorMonitor {
+    
+    private VistaMonitoreo vista;
+    private List<Sector> sectores;
+    private Sistema logica = Sistema.getInstancia();
+    
+    public void iniciarMonitoreo() {
+        sectores = logica.getSectores();
+        vista.mostrarTodosLosSectores(sectores);
+    }
     
 }

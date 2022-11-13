@@ -9,15 +9,23 @@
             <Property name="text" type="java.lang.String" value="Principal"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mnu_item_LoginAgenda">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_monitorLlamadas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Monitor de Llamadas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_monitorLlamadasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnu_item_LoginTrabajador">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Alt+L"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Login Agenda"/>
+                <Property name="text" type="java.lang.String" value="Login Trabajador"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnu_item_LoginAgendaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnu_item_LoginTrabajadorActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

@@ -1,4 +1,4 @@
-package dominio.sistema;
+package dominio.Sector;
 
 import dominio.trabajador.*;
 

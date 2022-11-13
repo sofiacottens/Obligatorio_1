@@ -12,19 +12,15 @@ public class PuestoDeTrabajo {
     private Trabajador trabajador;
     private Llamada llamadaEnCurso;
 
-    public PuestoDeTrabajo(){
-        
-    }
-    public PuestoDeTrabajo(double tiempoPromedio, int llamadasAtendidas, Trabajador trabajador, Llamada llamadaEnCurso) {
+    public PuestoDeTrabajo(){}
+    
+    public PuestoDeTrabajo(double tiempoPromedio, int llamadasAtendidas) {
    
         this.tiempoPromedio = tiempoPromedio;
         this.llamadasAtendidas = llamadasAtendidas;
-        this.tiempoPromedio = calcularTiempoPromedio();
+        this.trabajador = null;
+        this.llamadaEnCurso = null;
         
-    }
-
-    public PuestoDeTrabajo(double tiempoPromedio, int llamadasAtendidas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public double getTiempoPromedio() {
@@ -61,11 +57,15 @@ public class PuestoDeTrabajo {
 
     
     private double calcularTiempoPromedio() {
-        double llamadaInicio = (double) this.llamadaEnCurso.getFechaFin().getTime();
-        double llamadaFin = (double) this.llamadaEnCurso.getFechaFin().getTime();
-        double tiempoLlamadaActual =  llamadaFin - llamadaInicio;
-        double promedio = (this.tiempoPromedio + tiempoLlamadaActual) / this.llamadasAtendidas;
-        return promedio;
+        if(llamadaEnCurso != null){
+            double llamadaInicio = (double) this.llamadaEnCurso.getFechaFin().getTime();
+            double llamadaFin = (double) this.llamadaEnCurso.getFechaFin().getTime();
+            double tiempoLlamadaActual =  llamadaFin - llamadaInicio;
+            double promedio = (this.tiempoPromedio + tiempoLlamadaActual) / this.llamadasAtendidas;
+            return promedio;
+        } else {
+            return tiempoPromedio;
+        }
     }
     
 }

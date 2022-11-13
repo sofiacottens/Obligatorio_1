@@ -5,7 +5,6 @@ import dominio.Sistema;
 import dominio.sistema.Sector;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class SistemaTrabajador {
 
@@ -14,15 +13,16 @@ public class SistemaTrabajador {
     private Sector sector;
 
     public Sesion login(String cedula, String password) throws TrabajadorException {
-        Sesion sesion = loginTrabajador(cedula, password, trabajadores);
+        Sesion sesion = loginTrabajador(cedula, password);
             if (sesion != null) {
             logueados.add(sesion);
             sector.setCantidadConectados();
             sector.asignarPuesto(sesion.getUsuario());
             Sistema.getInstancia().avisar(EventoSistema.LOGIN);
-            
-        }
-        return sesion;
+            return sesion;
+            } else {
+             throw new TrabajadorException("Acceso denegado");          
+            }
     }
 
     private void puestosDisponibles()throws TrabajadorException{
@@ -30,54 +30,36 @@ public class SistemaTrabajador {
             throw new TrabajadorException("No hay puestos disponibles");
         } 
     }
-    private Sesion loginTrabajador(String cedula, String password, List trabajadoresLista) throws TrabajadorException {
-        Trabajador unT = new Trabajador(cedula, password);
-        for (Object trabajadorObj : trabajadoresLista) {
-            if(trabajadorObj.equals(unT)){
-            unT =  (Trabajador)trabajadorObj;
-            validarLogin(unT);
-            puestosDisponibles();
-            Sesion sesion = new Sesion(unT);
-            return sesion;
+    private Sesion loginTrabajador(String cedula, String password) throws TrabajadorException {
+        Trabajador unT = new Trabajador(cedula, password, "");
+        for (Trabajador t : trabajadores) {
+            if(t.equals(unT)){
+                unT = t;
+                puestosDisponibles();
+                Sesion sesion = new Sesion(unT);
+                return sesion;
                 
             }
         }
         return null;
     }
-
-    private void validarLogin(Trabajador trabajador) throws TrabajadorException{
-        if(!trabajador.getCedula().equals(trabajador.getCedula())
-                || !trabajador.getPassword().equals(trabajador.getPassword())) {
-            throw new TrabajadorException("Acceso denegado");
-        }
-        
-    }
-
     
     public List<Sesion> getLogueados() {
         return logueados;
     }
 
 
-    public Trabajador registrarUsuario(String cedula, String password, String nombreCompleto, Sector sector) {
+    public Trabajador crearTrabajador(String cedula, String password, String nombreCompleto, Sector sector) throws TrabajadorException {
 
-
-        Trabajador usuario = new Trabajador(cedula, nombreCompleto, password, sector);
+        Trabajador usuario = new Trabajador(cedula, nombreCompleto, password);
         if (!trabajadores.contains(usuario)) {
             trabajadores.add(usuario);
+        } else {
+            throw new TrabajadorException("El trabajador ya existe");
         }
         
         return usuario;
     }    
-
-    public Trabajador crearTrabajador(String cedula, String password, String nombreCompleto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   
-    public Trabajador crearTrabajador(String cedula, String password, String nombreCompleto, Sector sector) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     
     

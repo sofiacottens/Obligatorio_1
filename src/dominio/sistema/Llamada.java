@@ -67,7 +67,7 @@ public class Llamada {
     }
 
     private double calcularCostoLlamada() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 0;
     }
     
 }
