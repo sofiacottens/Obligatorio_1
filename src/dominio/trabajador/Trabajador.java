@@ -1,19 +1,27 @@
-/*
+                                                                                                                                                /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dominio.trabajador;
 
+import dominio.sistema.Sector;
 import java.util.Objects;
 
 public class Trabajador {
     private String cedula;
     private String nombre;
     private String password;
+    private Sector sector;
 
-    public Trabajador(String cedula, String nombre, String password) {
+    public Trabajador(String cedula, String nombre, String password, Sector sector) {
         this.cedula = cedula;
         this.nombre = nombre;
+        this.password = password;
+        this.sector = sector;
+    }
+
+    public Trabajador(String cedula, String password){
+        this.cedula = cedula;
         this.password = password;
     }
 
@@ -40,6 +48,15 @@ public class Trabajador {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Sector getSector() {
+        return sector;
+    }
+
+    public void setSector(Sector sector) {
+        this.sector = sector;
+    }
+    
      @Override
     public boolean equals(Object obj) {
         if (this == obj) {

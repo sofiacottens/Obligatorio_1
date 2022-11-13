@@ -15,6 +15,8 @@ public abstract class Login extends javax.swing.JDialog {
 
     /**
      * Creates new form Login
+     * @param parent
+     * @param modal
      */
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -22,8 +24,8 @@ public abstract class Login extends javax.swing.JDialog {
         setLocationRelativeTo(parent);
     }
     
-    public abstract Sesion login(String cedula, String password);
-   // public abstract void mostrarProximaInterfaz(Sesion sesion);
+    public abstract Sesion login(String username, String password);
+    public abstract void mostrarProximaInterfaz(Sesion sesion);
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +46,7 @@ public abstract class Login extends javax.swing.JDialog {
         setBackground(new java.awt.Color(0, 204, 0));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Usuario:");
+        jLabel1.setText("Cedula");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Password:");
@@ -57,7 +59,7 @@ public abstract class Login extends javax.swing.JDialog {
 
         btn_Login.setBackground(new java.awt.Color(169, 241, 151));
         btn_Login.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_Login.setText("Login");
+        btn_Login.setText("Atender llamadas");
         btn_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_LoginActionPerformed(evt);
@@ -68,24 +70,25 @@ public abstract class Login extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_Login)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_Usuario)
-                            .addComponent(pwd_Password, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))))
-                .addContainerGap(100, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_Usuario)
+                    .addComponent(pwd_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(btn_Login)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -93,20 +96,20 @@ public abstract class Login extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(pwd_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75)
+                .addGap(49, 49, 49)
                 .addComponent(btn_Login)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
-        String cedula = txt_Usuario.getText();
+        String usuarioFormString = txt_Usuario.getText();
         String password = String.valueOf(pwd_Password.getPassword());
-        Sesion sesion = login(cedula, password);
+        Sesion sesion = login(usuarioFormString, password);
         if (sesion != null) {
-            //mostrarProximaInterfaz(sesion);
+            mostrarProximaInterfaz(sesion);
             dispose();
         } else {
             JOptionPane.showMessageDialog(

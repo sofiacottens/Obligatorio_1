@@ -1,13 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uiswing;
 
-import dominio.Sistema;
 import dominio.trabajador.Sesion;
+import dominio.Sistema;
+import dominio.trabajador.Trabajador;
+import dominio.trabajador.TrabajadorException;
+import uiswing.AtenderLlamada;
+
 import java.awt.Frame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginTrabajador extends Login {
 
@@ -16,10 +17,20 @@ public class LoginTrabajador extends Login {
     }
 
     @Override
-    public Sesion login(String username, String password) {
-        return Sistema.getInstancia().login(username, password);
+    public Sesion login(String cedula, String password) {
+        try {
+            return Sistema.getInstancia().loginTrabajador(cedula, password);
+        } catch (TrabajadorException ex) {
+            Logger.getLogger(LoginTrabajador.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+      }
+
+    @Override
+    public void mostrarProximaInterfaz(Sesion sesion) {
+        AtenderLlamada atender;
     }
+
   
 
 }
-

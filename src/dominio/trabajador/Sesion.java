@@ -11,6 +11,8 @@ public class Sesion {
         this.trabajador = trabajador;
     }
 
+    
+
     /*Sesion(Trabajador trabajador) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
