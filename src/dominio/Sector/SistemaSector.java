@@ -58,14 +58,27 @@ public class SistemaSector {
         }
         return sector;
     }
-    
-   public void agregarTrabajadorEnSector(Trabajador trabajador, Sector sector){
-       sector.agregarTrabajador(trabajador);
-
-   }
-
+   
     public void agregarPuestoEnSector(PuestoDeTrabajo p, Sector s) {
         s.agregarPuesto(p);
+    }
+
+    public int numeroDePuestoDeTrabajo(Trabajador trabajador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String cantidadLlamadasAtendidas(Trabajador trabajador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String tiempoPromedioLlamada(Trabajador trabajador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void agregarSectorATrabajador(Trabajador t, Sector sector) throws SectorException {
+        if (!t.agregarSector(sector)){
+            throw new SectorException("El trabajador ya es parte de otro sector: " + t.getSector());
+        }
     }
     
 }
