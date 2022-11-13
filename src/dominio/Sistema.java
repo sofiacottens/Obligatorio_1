@@ -1,9 +1,9 @@
 package dominio;
 
 
-import dominio.sistema.SistemaSector;
+import dominio.Sector.SectorException;
+import dominio.Sector.SistemaSector;
 import dominio.trabajador.SistemaTrabajador;
-import dominio.trabajador.Trabajador;
 import dominio.trabajador.TrabajadorException;
 import dominio.sistema.Llamada;
 import dominio.sistema.PuestoDeTrabajo;
@@ -38,11 +38,6 @@ public class Sistema extends Observable {
     
     public Sector crearSector(String nombre, int numero, int cantidadPuestos){
         return ss.crearSector(nombre, numero, cantidadPuestos);
-    }
-    
-
-    public void agregarTrabajadorEnSector(Trabajador t, Sector s){
-        ss.agregarTrabajadorEnSector(t,s);
     }
     
     public List<Sector> getSectores() {
@@ -81,5 +76,9 @@ public class Sistema extends Observable {
     public String tiempoPromedioLlamada(Trabajador trabajador) {
         return ss.tiempoPromedioLlamada(trabajador);
 
+    }
+
+    public void agregarSectorATrabajador(Trabajador t, Sector sector) throws SectorException {
+        ss.agregarSectorATrabajador(t,sector);
     }
 }
