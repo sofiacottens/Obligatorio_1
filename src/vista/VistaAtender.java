@@ -10,7 +10,7 @@ public interface VistaAtender {
 
 
 
-    public void costoLlamada();
+    public void costoLlamada(String costo);
 
     public void finalizarLlamada(String descripcion);
 }

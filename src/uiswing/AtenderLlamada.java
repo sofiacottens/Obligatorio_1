@@ -8,6 +8,7 @@ import vista.VistaAtender;
 import controlador.ControladorAtenderLlamada;
 import static dominio.EventoSistema.FINALIZAR_LLAMADA;
 import dominio.trabajador.Trabajador;
+import java.util.Set;
 import javax.swing.JFrame; 
 import observer.Observable;
 
@@ -28,8 +29,6 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
 
     private AtenderLlamada() {
     }
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,8 +165,9 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
                                 .addComponent(LabTiempoPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(LabCostoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabCostoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -189,9 +189,9 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labEstadoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                .addGap(4, 4, 4)
                 .addComponent(LabCostoLlamada)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabSector2))
@@ -214,29 +214,27 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
     }//GEN-LAST:event_labEstadoLlamadaActionPerformed
 
     private void LabTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabTrabajadorActionPerformed
-        mostrarNombreTrabajador();
         
     }//GEN-LAST:event_LabTrabajadorActionPerformed
 
     private void LabSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabSectorActionPerformed
-       mostrarSector();
+       
     }//GEN-LAST:event_LabSectorActionPerformed
 
     private void LabLlamadasAtendidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabLlamadasAtendidasActionPerformed
-        cantidadLlamadasAtendidas();
+      
     }//GEN-LAST:event_LabLlamadasAtendidasActionPerformed
 
     private void LabTiempoPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabTiempoPromedioActionPerformed
-        tiempoPromedioLlamada();
+        
     }//GEN-LAST:event_LabTiempoPromedioActionPerformed
 
     private void btnFinalizarLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarLlamadaActionPerformed
-        finalizarLlamada();
-        controlador.actualizar(origen, FINALIZAR_LLAMADA);
+        String descripcion = txtDescripcion.getText();
+        controlador.finalizarLlamada(descripcion);
     }//GEN-LAST:event_btnFinalizarLlamadaActionPerformed
 
     private void LabCostoLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabCostoLlamadaActionPerformed
-        controlador.costoLlamada();
     }//GEN-LAST:event_LabCostoLlamadaActionPerformed
 
     /**
@@ -292,54 +290,34 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
     private javax.swing.JTextArea txtDescripcion;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrarNombreTrabajador() {
-        controlador.mostrarNombreTrabajador();
-    }
-
-    private void mostrarSector() {
-        controlador.mostrarSector();
-    }
-
-    private void cantidadLlamadasAtendidas() {
-        controlador.cantidadLlamadasAtendidas();
-    }
-
     @Override
     public void mostrarNombreTrabajador(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LabTrabajador.setText(nombre);
+        
     }
 
     @Override
     public void mostrarSector(String sector) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LabSector.setText(sector);
     }
 
     @Override
     public void cantidadLlamadasAtendidas(String atendidas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void tiempoPromedioLlamada() {
-        controlador.tiempoPromedioLlamada();
+        LabLlamadasAtendidas.setText(atendidas);
     }
 
     @Override
     public void tiempoPromedioLlamada(String atendidas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void finalizarLlamada() {
-        String descripcion = txtDescripcion.getText();
-        controlador.finalizarLlamada(descripcion);
+        LabTiempoPromedio.setText(atendidas);
     }
 
     @Override
-    public void costoLlamada() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void costoLlamada(String costo) {
+        LabCostoLlamada.setText(costo);
     }
 
     @Override
     public void finalizarLlamada(String descripcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        controlador.actualizar(origen, FINALIZAR_LLAMADA);
     }
 }
