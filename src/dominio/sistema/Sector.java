@@ -7,6 +7,7 @@ package dominio.sistema;
 import java.util.List;
 import dominio.trabajador.Trabajador;
 import dominio.sistema.PuestoDeTrabajo;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -14,8 +15,8 @@ import java.util.HashSet;
  * @author alumnoFI
  */
 public class Sector {
-    private List<Trabajador> trabajadores;
-    private List<PuestoDeTrabajo> puestosDeTrabajo;
+    private List<Trabajador> trabajadores= new ArrayList<>();
+    private List<PuestoDeTrabajo> puestosDeTrabajo = new ArrayList<>();
     private String nombre;
     private int numero;
     private int cantidadPuestos;
@@ -88,12 +89,13 @@ public class Sector {
     }
 
     public void agregarPuesto(PuestoDeTrabajo p) {
-        if(puestosDeTrabajo.size() > 0 && puestosDeTrabajo.size() <= cantidadPuestos){
-            if (!puestosDeTrabajo.contains(p)) {
+            if(puestosDeTrabajo.size() > 0 && puestosDeTrabajo.size() <= cantidadPuestos){
+                if (!puestosDeTrabajo.contains(p)) {
+                    puestosDeTrabajo.add(p);
+                }
+            } else {
                 puestosDeTrabajo.add(p);
-           }
-        } else {
-            puestosDeTrabajo.add(p);
+            
         }
     }
     
