@@ -81,10 +81,9 @@ public  class ControladorAtenderLlamada implements Observador {
         vista.finalizarLlamada(descripcion);
     }
 
-    public String costoLlamada() {
-        vista.costoLlamada();
-        return Sistema.getInstancia().costoLlamada(this.llamada);
-        
+    public void costoLlamada() {
+        String costo = Sistema.getInstancia().costoLlamada(this.llamada);
+        vista.costoLlamada(costo);
     }
 
    
