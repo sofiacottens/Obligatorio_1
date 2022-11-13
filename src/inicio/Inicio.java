@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package inicio;
+import dominio.Sector.SectorException;
+import dominio.trabajador.TrabajadorException;
 import uiswing.Principal;
 
 public class Inicio {
@@ -10,7 +12,7 @@ public class Inicio {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SectorException, TrabajadorException {
         DatosPrueba.cargar();
         Principal principal = new Principal();
         principal.setVisible(true);
