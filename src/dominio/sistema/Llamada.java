@@ -71,6 +71,10 @@ public class Llamada {
         this.descripcion = descripcion;
     }
 
+
+    private double calcularCostoLlamada() {
+        return 0;
+
     public Trabajador getTrabajador() {
         return trabajador;
     }
@@ -88,7 +92,6 @@ public class Llamada {
     }
 
     
-
     void finalizarLlamada(Trabajador trabajador, Llamada llamada, String descrpcionLlamada) {
         llamada.setTrabajador(trabajador);
         llamada.setFechaFin(new Date());

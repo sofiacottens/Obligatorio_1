@@ -1,17 +1,19 @@
 package inicio;
 
+import dominio.Sector.SectorException;
 import dominio.Sistema;
 import dominio.sistema.Llamada;
 import dominio.sistema.PuestoDeTrabajo;
 import dominio.sistema.Sector;
 import dominio.trabajador.Trabajador;
+import dominio.trabajador.TrabajadorException;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Calendar;
 
 public class DatosPrueba {
 
-    public static void cargar() {
+    public static void cargar() throws SectorException, TrabajadorException {
         Sistema logica = Sistema.getInstancia();
         Calendar fecha = Calendar.getInstance();
         
@@ -50,16 +52,14 @@ public class DatosPrueba {
         pdt7.setTrabajador(t7);
         pdt8.setTrabajador(t8);
         
-        
-        
-        logica.agregarTrabajadorEnSector(t1, sector4);
-        logica.agregarTrabajadorEnSector(t2, sector4);
-        logica.agregarTrabajadorEnSector(t3, sector3);
-        logica.agregarTrabajadorEnSector(t4, sector3);
-        logica.agregarTrabajadorEnSector(t5, sector2);
-        logica.agregarTrabajadorEnSector(t6, sector2);
-        logica.agregarTrabajadorEnSector(t7, sector1);
-        logica.agregarTrabajadorEnSector(t8, sector1);
+        logica.agregarSectorATrabajador(t1, sector4);
+        logica.agregarSectorATrabajador(t2, sector4);
+        logica.agregarSectorATrabajador(t3, sector3);
+        logica.agregarSectorATrabajador(t4, sector3);
+        logica.agregarSectorATrabajador(t5, sector2);
+        logica.agregarSectorATrabajador(t6, sector2);
+        logica.agregarSectorATrabajador(t7, sector1);
+        logica.agregarSectorATrabajador(t8, sector1);
         
         logica.agregarPuestoEnSector(pdt1, sector4);
         logica.agregarPuestoEnSector(pdt2, sector4);

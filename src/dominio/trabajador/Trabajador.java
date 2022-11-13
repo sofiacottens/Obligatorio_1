@@ -13,18 +13,13 @@ public class Trabajador {
     private String password;
     private Sector sector;
 
-    public Trabajador(String cedula, String nombre, String password, Sector sector) {
+    public Trabajador(String cedula, String nombre ,String password){
         this.cedula = cedula;
+        this.password = password;
         this.nombre = nombre;
-        this.password = password;
-        this.sector = sector;
+        this.sector = null;
     }
-
-    public Trabajador(String cedula, String password){
-        this.cedula = cedula;
-        this.password = password;
-    }
-
+    
     public String getCedula() {
         return cedula;
     }
@@ -59,17 +54,21 @@ public class Trabajador {
     
      @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
+        Boolean ret = false;
+        Trabajador t = (Trabajador) obj;
+        if (Objects.equals(this.cedula, t.cedula) && Objects.equals(this.password, t.password)) {
+            ret = true;
+        }
+        return ret;
+    }
+
+    public boolean agregarSector(Sector sector) {
+        if (this.sector == null){
+            this.sector = sector;
             return true;
-        }
-        if (obj == null) {
+        } else {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Trabajador other = (Trabajador) obj;
-        return Objects.equals(this.cedula, other.cedula);
     }
     
 }

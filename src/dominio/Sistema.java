@@ -29,7 +29,7 @@ public class Sistema extends Observable {
     public Sesion loginTrabajador(String usuario, String password) throws TrabajadorException {
         return st.login(usuario, password);
     }
-    public Trabajador crearTrabajador(String cedula, String password, String nombreCompleto, Sector sector) {
+    public Trabajador crearTrabajador(String cedula, String password, String nombreCompleto, Sector sector) throws TrabajadorException {
         return st.crearTrabajador(cedula, password, nombreCompleto, sector);
     }
     
@@ -57,8 +57,8 @@ public class Sistema extends Observable {
             String cedula,
             String password,
             String nombreCompleto, 
-            Sector sector) {
-        st.registrarUsuario(cedula, password, nombreCompleto, sector);
+            Sector sector) throws TrabajadorException {
+        st.crearTrabajador(cedula, password, nombreCompleto, sector);
     }
    
     public List<Sesion> getLogueados() {

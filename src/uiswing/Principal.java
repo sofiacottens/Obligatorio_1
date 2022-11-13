@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package uiswing;
-import uiswing.Login;
 
 import javax.swing.JOptionPane;
 
@@ -31,7 +30,8 @@ public class Principal extends javax.swing.JFrame {
 
         mnu_Principal = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        mnu_item_LoginAgenda = new javax.swing.JMenuItem();
+        jMenuItem_monitorLlamadas = new javax.swing.JMenuItem();
+        mnu_item_LoginTrabajador = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnu_item_Salir = new javax.swing.JMenuItem();
 
@@ -39,20 +39,28 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("Principal");
 
-        mnu_item_LoginAgenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        mnu_item_LoginAgenda.setText("Login Agenda");
-        mnu_item_LoginAgenda.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem_monitorLlamadas.setText("Monitor de Llamadas");
+        jMenuItem_monitorLlamadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnu_item_LoginAgendaActionPerformed(evt);
+                jMenuItem_monitorLlamadasActionPerformed(evt);
             }
         });
-        jMenu1.add(mnu_item_LoginAgenda);
+        jMenu1.add(jMenuItem_monitorLlamadas);
+
+        mnu_item_LoginTrabajador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
+        mnu_item_LoginTrabajador.setText("Login Trabajador");
+        mnu_item_LoginTrabajador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnu_item_LoginTrabajadorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnu_item_LoginTrabajador);
 
         mnu_Principal.add(jMenu1);
 
         jMenu2.setText("Aplicación");
 
-        mnu_item_Salir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mnu_item_Salir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
         mnu_item_Salir.setText("Salir");
         mnu_item_Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,10 +91,15 @@ public class Principal extends javax.swing.JFrame {
         salir();
     }//GEN-LAST:event_mnu_item_SalirActionPerformed
 
-    private void mnu_item_LoginAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_item_LoginAgendaActionPerformed
+    private void mnu_item_LoginTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_item_LoginTrabajadorActionPerformed
         Login login = new LoginTrabajador(this, false);
         login.setVisible(true);
-    }//GEN-LAST:event_mnu_item_LoginAgendaActionPerformed
+    }//GEN-LAST:event_mnu_item_LoginTrabajadorActionPerformed
+
+    private void jMenuItem_monitorLlamadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_monitorLlamadasActionPerformed
+        MonitorLlamadas monitor = new MonitorLlamadas();
+        monitor.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_monitorLlamadasActionPerformed
 
     private void salir() {
         int opcion = JOptionPane.showConfirmDialog(this, "Desea Salir?");
@@ -98,8 +111,9 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem_monitorLlamadas;
     private javax.swing.JMenuBar mnu_Principal;
-    private javax.swing.JMenuItem mnu_item_LoginAgenda;
+    private javax.swing.JMenuItem mnu_item_LoginTrabajador;
     private javax.swing.JMenuItem mnu_item_Salir;
     // End of variables declaration//GEN-END:variables
 }
