@@ -20,6 +20,10 @@ public class ControladorMonitor {
     private List<Sector> sectores;
     private Sistema logica = Sistema.getInstancia();
     
+    public void hacerCommit(){
+        
+    }
+    
     public void iniciarMonitoreo() {
         sectores = logica.getSectores();
         vista.mostrarTodosLosSectores(sectores);
