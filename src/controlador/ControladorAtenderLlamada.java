@@ -38,9 +38,11 @@ public  class ControladorAtenderLlamada implements Observador {
     
     @Override
     public void actualizar(Observable origen, Object evento) {
-        if (evento.equals(EventoSistema.LOGIN)) {
-            //mostrarContactos();
-            //mostrarTitulo();
+        if (evento.equals(EventoSistema.FINALIZAR_LLAMADA)) {
+            cantidadLlamadasAtendidas();
+            tiempoPromedioLlamada();
+            costoLlamada();
+            
         }
     }
 
@@ -72,6 +74,17 @@ public  class ControladorAtenderLlamada implements Observador {
     public void tiempoPromedioLlamada() {
        String atendidas = Sistema.getInstancia().tiempoPromedioLlamada(this.trabajador);
        vista.tiempoPromedioLlamada(atendidas);
+    }
+
+    public void finalizarLlamada(String descripcion) {
+        Sistema.getInstancia().finalizarLlamada(this.trabajador, this.llamada, descripcion);
+        vista.finalizarLlamada(descripcion);
+    }
+
+    public String costoLlamada() {
+        vista.costoLlamada();
+        return Sistema.getInstancia().costoLlamada(this.llamada);
+        
     }
 
    

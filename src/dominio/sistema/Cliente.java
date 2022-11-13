@@ -8,7 +8,7 @@ package dominio.sistema;
  *
  * @author alumnoFI
  */
-public class Cliente {
+public abstract class Cliente {
     private String cedula;
     private String nombre;
     private double saldo;
@@ -42,5 +42,10 @@ public class Cliente {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
+
+    /**
+     *
+     */
+    public abstract double calcularCostosLlamada(Llamada llamada);
     
 }

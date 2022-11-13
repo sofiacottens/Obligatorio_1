@@ -4,6 +4,7 @@
  */
 package dominio.sistema;
 
+import dominio.trabajador.Trabajador;
 import java.util.Date;
 
 /**
@@ -16,14 +17,18 @@ public class Llamada {
     private double costo;
     private Sector sector;
     String descripcion;
+    private Trabajador trabajador;
+    private Cliente cliente;
 
-    public Llamada(Date fechaInicio, Sector sector) {
+    public Llamada(Date fechaInicio, Sector sector, Cliente cliente) {
         this.fechaInicio = fechaInicio;
         this.sector = sector;
         this.descripcion = descripcion;
         this.fechaInicio = new Date();
-        this.fechaFin = new Date();
-        this.costo = calcularCostoLlamada();
+        this.fechaFin = fechaFin;
+        this.costo = costo;
+        this.trabajador = trabajador;
+        this.cliente = cliente;
     }
 
     public Date getFechaInicio() {
@@ -66,8 +71,36 @@ public class Llamada {
         this.descripcion = descripcion;
     }
 
+
     private double calcularCostoLlamada() {
         return 0;
+
+    public Trabajador getTrabajador() {
+        return trabajador;
+    }
+
+    public void setTrabajador(Trabajador trabajador) {
+        this.trabajador = trabajador;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    
+    void finalizarLlamada(Trabajador trabajador, Llamada llamada, String descrpcionLlamada) {
+        llamada.setTrabajador(trabajador);
+        llamada.setFechaFin(new Date());
+        llamada.setDescripcion(descrpcionLlamada);
+        llamada.setCosto(calcularCostoLlamada(llamada));
+    }
+
+    public double calcularCostoLlamada(Llamada llamada) {
+        return cliente.calcularCostosLlamada(llamada);
     }
     
 }

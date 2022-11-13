@@ -6,4 +6,10 @@ public interface VistaAtender {
     public void mostrarSector(String sector);
     public void cantidadLlamadasAtendidas(String atendidas);
     public void tiempoPromedioLlamada(String atendidas);
+
+
+
+    public void costoLlamada();
+
+    public void finalizarLlamada(String descripcion);
 }
