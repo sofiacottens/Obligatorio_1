@@ -1,5 +1,5 @@
 package dominio;
 
 public enum EventoSistema {
-    LOGIN, LOGOUT;
+    LOGIN, LOGOUT, FINALIZAR_LLAMADA;
 }
