@@ -6,13 +6,16 @@
 package uiswing;
 import vista.VistaAtender;
 import controlador.ControladorAtenderLlamada;
+import static dominio.EventoSistema.FINALIZAR_LLAMADA;
 import dominio.trabajador.Trabajador;
 import javax.swing.JFrame; 
+import observer.Observable;
 
 
 public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
 
     ControladorAtenderLlamada controlador = new ControladorAtenderLlamada();
+    Observable origen;
     
     public AtenderLlamada(java.awt.Frame parent, boolean modal, Trabajador trabajador){
         //super(parent, modal);
@@ -50,6 +53,7 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
         LabSector = new javax.swing.JTextField();
         LabLlamadasAtendidas = new javax.swing.JTextField();
         LabTiempoPromedio = new javax.swing.JTextField();
+        LabCostoLlamada = new javax.swing.JTextField();
 
         LabSector1.setText("jLabel1");
 
@@ -82,6 +86,11 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
         LabSector2.setText("Descripción:");
 
         btnFinalizarLlamada.setText("Finalizar llamada");
+        btnFinalizarLlamada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarLlamadaActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +127,13 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
             }
         });
 
+        LabCostoLlamada.setText("jTextField2");
+        LabCostoLlamada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabCostoLlamadaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,7 +164,10 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
                                 .addComponent(LabLlamadasAtendidas, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(LabTiempoPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(LabCostoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -170,7 +189,9 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labEstadoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(9, 9, 9)
+                .addComponent(LabCostoLlamada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabSector2))
@@ -209,6 +230,15 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
         tiempoPromedioLlamada();
     }//GEN-LAST:event_LabTiempoPromedioActionPerformed
 
+    private void btnFinalizarLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarLlamadaActionPerformed
+        finalizarLlamada();
+        controlador.actualizar(origen, FINALIZAR_LLAMADA);
+    }//GEN-LAST:event_btnFinalizarLlamadaActionPerformed
+
+    private void LabCostoLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabCostoLlamadaActionPerformed
+        controlador.costoLlamada();
+    }//GEN-LAST:event_LabCostoLlamadaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -246,6 +276,7 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField LabCostoLlamada;
     private javax.swing.JTextField LabLlamadasAtendidas;
     private javax.swing.JTextField LabSector;
     private javax.swing.JLabel LabSector1;
@@ -294,6 +325,21 @@ public class AtenderLlamada extends javax.swing.JFrame implements VistaAtender {
 
     @Override
     public void tiempoPromedioLlamada(String atendidas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void finalizarLlamada() {
+        String descripcion = txtDescripcion.getText();
+        controlador.finalizarLlamada(descripcion);
+    }
+
+    @Override
+    public void costoLlamada() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void finalizarLlamada(String descripcion) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -5,6 +5,7 @@
  */
 package dominio.Sector;
 
+import dominio.sistema.Cliente;
 import dominio.sistema.Llamada;
 import dominio.sistema.PuestoDeTrabajo;
 import dominio.sistema.Sector;
@@ -43,8 +44,8 @@ public class SistemaSector {
         return pdt;
     }
 
-    public Llamada crearLlamada(Date fechaInicio, Sector sector){
-        Llamada llamada = new Llamada(fechaInicio, sector);
+    public Llamada crearLlamada(Date fechaInicio, Sector sector, Cliente cliente){
+        Llamada llamada = new Llamada(fechaInicio, sector, cliente);
         if (!llamadas.contains(llamada)) {
             llamadas.add(llamada);
         }

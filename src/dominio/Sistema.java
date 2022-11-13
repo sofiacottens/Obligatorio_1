@@ -8,6 +8,7 @@ import dominio.trabajador.TrabajadorException;
 import dominio.sistema.Llamada;
 import dominio.sistema.PuestoDeTrabajo;
 import dominio.sistema.Sector;
+import dominio.sistema.SistemaLlamada;
 import dominio.trabajador.Sesion;
 import dominio.trabajador.Trabajador;
 import java.util.Date;
@@ -19,7 +20,7 @@ public class Sistema extends Observable {
     private static Sistema instancia = new Sistema();
     private SistemaTrabajador st = new SistemaTrabajador();
     private SistemaSector ss = new SistemaSector();
-
+    private SistemaLlamada sl = new SistemaLlamada();
 
     public static Sistema getInstancia() {
         return instancia;
@@ -81,5 +82,13 @@ public class Sistema extends Observable {
     public String tiempoPromedioLlamada(Trabajador trabajador) {
         return ss.tiempoPromedioLlamada(trabajador);
 
+    }
+
+    public void finalizarLlamada(Trabajador trabajador, Llamada llamada, String descripcion) {
+        sl.finalizarLlamada(trabajador, llamada, descripcion);
+    }
+
+    public String costoLlamada(Llamada llamada) {
+        return sl.costoLlamada(llamada);
     }
 }

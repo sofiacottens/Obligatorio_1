@@ -32,7 +32,7 @@ public class PuestoDeTrabajo {
     }
 
     public void setTiempoPromedio(double tiempoPromedio) {
-        this.tiempoPromedio = tiempoPromedio;
+        this.tiempoPromedio = calcularTiempoPromedio();
     }
 
     public int getLlamadasAtendidas() {
