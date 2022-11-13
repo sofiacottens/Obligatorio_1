@@ -81,5 +81,9 @@ public class SistemaSector {
             throw new SectorException("El trabajador ya es parte de otro sector: " + t.getSector());
         }
     }
+
+    public Llamada crearLlamada(Date fechaInicio, Sector s) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -74,7 +74,7 @@ public class Llamada {
 
     private double calcularCostoLlamada() {
         return 0;
-
+    }
     public Trabajador getTrabajador() {
         return trabajador;
     }

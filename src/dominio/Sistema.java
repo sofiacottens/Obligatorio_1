@@ -1,6 +1,4 @@
 package dominio;
-
-
 import dominio.Sector.SectorException;
 import dominio.Sector.SistemaSector;
 import dominio.trabajador.SistemaTrabajador;
@@ -86,6 +84,7 @@ public class Sistema extends Observable {
 
     public String costoLlamada(Llamada llamada) {
         return sl.costoLlamada(llamada);
+    }
 
     public void agregarSectorATrabajador(Trabajador t, Sector sector) throws SectorException {
         ss.agregarSectorATrabajador(t,sector);
